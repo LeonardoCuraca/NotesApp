@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        sp.edit().putBoolean("isLogged", true).putString("username", newUser.getFullname()).apply();
+        sp.edit().putBoolean("isLogged", true).putLong("userId", newUser.getId()).apply();
 
         startActivity(new Intent(this, NotesActivity.class));
         finish();

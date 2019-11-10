@@ -5,46 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.RegisterActivity">
+    tools:context=".activities.RegisterNoteActivity">
 
     <EditText
-        android:id="@+id/user_reg_et"
+        android:id="@+id/title_reg_et"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:hint="Nombre de Usuario" />
+        android:layout_height="wrap_content"
+        android:hint="Título"
+        android:height="80sp"/>
 
     <EditText
-        android:id="@+id/fullname_reg_et"
+        android:id="@+id/content_reg_et"
         android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:hint="Nombres Completos" />
-
-    <EditText
-        android:id="@+id/email_reg_et"
-        android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:hint="Correo Electrónico" />
-
-    <EditText
-        android:id="@+id/password_reg_et"
-        android:layout_width="match_parent"
-        android:layout_height="80sp"
-        android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:layout_height="wrap_content"
+        android:hint="Contenido"
+        android:height="80sp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/register_reg_btn"
+            android:id="@+id/register_note_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Registrar"
             android:layout_alignParentBottom="true"
             android:height="64dp"
             android:background="@color/colorPrimary"
-            android:text="Registrar"
-            android:textColor="#fff" />
+            android:textColor="#fff"/>
 
     </RelativeLayout>
 

@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.RegisterNoteActivity"></activity>
+
         <meta-data
             android:name="DATABASE"
             android:value="notesapp.db" />
@@ -23,7 +25,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.lcuraca.tecsup.notesapp.models" />
 
-        <activity android:name=".activities.NotesActivity"></activity>
+        <activity android:name=".activities.NotesActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

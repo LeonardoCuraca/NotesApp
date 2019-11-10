@@ -22,9 +22,10 @@ import java.util.List;
 public class AllNotesFragment extends Fragment {
 
     private RecyclerView notes_list;
+    private String state;
 
-    public AllNotesFragment() {
-        // Required empty public constructor
+    public AllNotesFragment(String state) {
+        this.state = state;
     }
 
     @Override
@@ -34,8 +35,8 @@ public class AllNotesFragment extends Fragment {
         notes_list = view.findViewById(R.id.notes_list);
         notes_list.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Notes> notes = NotesRepository.findByState("all");
-        notes_list.setAdapter(new NotesAdapter(notes));
+        List<Notes> notes = NotesRepository.findByState(state);
+        notes_list.setAdapter(new NotesAdapter(getContext(), notes));
         return view;
     }
 }

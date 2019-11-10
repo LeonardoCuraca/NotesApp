@@ -47,13 +47,13 @@ public class RegisterActivity extends AppCompatActivity {
         String password = password_reg_et.getText().toString();
 
         if(user.isEmpty() || fullname.isEmpty() || email.isEmpty() || password.isEmpty()){
-            Toast.makeText(this, "You must complete these fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debes completar todos los cambios", Toast.LENGTH_SHORT).show();
             return;
         }
 
         UserRepository.create(user, fullname, email, password);
 
         startActivity(new Intent(this, MainActivity.class));
-
+        finish();
     }
 }

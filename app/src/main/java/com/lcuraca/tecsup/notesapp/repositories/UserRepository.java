@@ -10,6 +10,11 @@ public class UserRepository {
         return users;
     }
 
+    public static User findUserById(Long id){
+        List<User> user = SugarRecord.find(User.class, "id =? ", String.valueOf(id));
+        return user.get(0);
+    }
+
     public static User login(String username, String password) {
         List<User> users = SugarRecord.listAll(User.class);
         for (User user : users) {

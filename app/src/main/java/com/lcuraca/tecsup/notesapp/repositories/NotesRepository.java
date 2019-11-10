@@ -1,5 +1,8 @@
 package com.lcuraca.tecsup.notesapp.repositories;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.lcuraca.tecsup.notesapp.models.Notes;
 import com.orm.SugarRecord;
 
@@ -12,7 +15,7 @@ public class NotesRepository {
     }
 
     public static List<Notes> findByState(String type){
-        List<Notes> notes = SugarRecord.find(Notes.class, "state =? ", type);
+        List<Notes> notes = SugarRecord.find(Notes.class, "state=? ", type);
         return notes;
     }
 
@@ -21,10 +24,27 @@ public class NotesRepository {
         SugarRecord.save(note);
     }
 
-    public static void updateState(String state, long id){
+    public static boolean updateState(Context context, String state, long id){
         Notes note = SugarRecord.findById(Notes.class, id);
-        note.getState();
+        if (state.equals(note.getState())){
+            note.setState("all");
+        } else if (state.equals("archived") && note.getState().equals("favorites")){
+            Toast.makeText(context, "No puedes archivar notas favoritas", Toast.LENGTH_SHORT);
+            return false;
+        } else if (state.equals("favorites") && note.getState().equals("archived")){
+            Toast.makeText(context, "Primero desarchiva la nota", Toast.LENGTH_SHORT);
+            return false;
+        } else {
+            if (state.equals("archived")){
+                Toast.makeText(context, "Nota añadida a favoritos", Toast.LENGTH_SHORT);
+            }
+            if (state.equals("favorites")){
+                Toast.makeText(context, "Nota archivada", Toast.LENGTH_SHORT);
+            }
+            note.setState(state);
+        }
         SugarRecord.save(note);
+        return true;
     }
 
 }
