@@ -51,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         String user = user_et.getText().toString();
         String password = password_et.getText().toString();
 
+        User newUser = UserRepository.login(user, password);
+
+        if (newUser == null) {
+            Toast.makeText(this, "Usuario y/o clave inválido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        sp.edit().putBoolean("isLogged", true).putLong("userId", newUser.getId()).apply();
 
         startActivity(new Intent(this, NotesActivity.class));
         finish();
