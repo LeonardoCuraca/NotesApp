@@ -14,8 +14,8 @@ public class NotesRepository {
         return notes;
     }
 
-    public static List<Notes> findByState(String type){
-        List<Notes> notes = SugarRecord.find(Notes.class, "state=? ", type);
+    public static List<Notes> findByState(Long id, String type){
+        List<Notes> notes = SugarRecord.find(Notes.class, "id =? and state=? ", String.valueOf(id), type);
         return notes;
     }
 

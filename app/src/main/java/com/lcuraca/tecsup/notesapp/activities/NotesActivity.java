@@ -55,8 +55,6 @@ public class NotesActivity extends AppCompatActivity {
             }
         });
 
-        showFirstFragment();
-
         username = findViewById(R.id.username);
 
         addNote = findViewById(R.id.addNote);
@@ -76,23 +74,25 @@ public class NotesActivity extends AppCompatActivity {
             username.setText("Bienvenido(a) " + user.getFullname());
         }
 
+        showFirstFragment();
+
     }
 
     private void showFirstFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = new AllNotesFragment("all");
+        Fragment fragment = new AllNotesFragment(userId,"all");
         fm.beginTransaction().replace(R.id.content, fragment).commit();
     }
 
     private void showSecondFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = new AllNotesFragment("favorites");
+        Fragment fragment = new AllNotesFragment(userId,"favorites");
         fm.beginTransaction().replace(R.id.content, fragment).commit();
     }
 
     private void showThirdFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = new AllNotesFragment("archived");
+        Fragment fragment = new AllNotesFragment(userId,"archived");
         fm.beginTransaction().replace(R.id.content, fragment).commit();
     }
 

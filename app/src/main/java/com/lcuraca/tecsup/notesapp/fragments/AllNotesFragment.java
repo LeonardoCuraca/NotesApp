@@ -23,8 +23,10 @@ public class AllNotesFragment extends Fragment {
 
     private RecyclerView notes_list;
     private String state;
+    private Long id;
 
-    public AllNotesFragment(String state) {
+    public AllNotesFragment(Long id, String state) {
+        this.id = id;
         this.state = state;
     }
 
@@ -35,7 +37,7 @@ public class AllNotesFragment extends Fragment {
         notes_list = view.findViewById(R.id.notes_list);
         notes_list.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Notes> notes = NotesRepository.findByState(state);
+        List<Notes> notes = NotesRepository.findByState(id, state);
         notes_list.setAdapter(new NotesAdapter(getContext(), notes));
         return view;
     }
